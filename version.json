@@ -1,0 +1,15 @@
+{
+  "version": "1.0.0",
+  "releaseDate": "2025-10-16",
+  "type": "initial",
+  "priority": "medium",
+  "changes": [
+    {
+      "type": "feature",
+      "title": "🎉 Initial Release",
+      "description": "NEXA AI v1.0.0 is now live!"
+    }
+  ],
+  "newFiles": [],
+  "requiredAction": false
+}
