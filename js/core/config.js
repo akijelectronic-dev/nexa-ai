@@ -26,7 +26,7 @@ var CONFIG = {
   /* ─────────────────────────────────────────────
      ⚠️ WORKER URL
      ───────────────────────────────────────────── */
-  workerURL: 'https://nxt-cyber-v6.akijelectronic.workers.dev',
+  workerURL: 'https://nexa-ai-v2.akijelectronic.workers.dev/',
   
   /* ─────────────────────────────────────────────
      TISHA CHARACTER
