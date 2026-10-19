@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="bn" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#a855f7">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="author" content="AL-AMIN">
+<meta name="description" content="NEXA AI — Next Generation AI Twin">
+<title>NEXA AI — AL-AMIN's AI Twin</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&family=Orbitron:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- SPLASH SCREEN -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div id="splash">
+  <div class="splash-bg"></div>
+  <div class="splash-content">
+    <div class="splash-logo">
+      <div class="logo-inner">
+        <span class="logo-n">N</span>
+        <div class="logo-ring ring-1"></div>
+        <div class="logo-ring ring-2"></div>
+        <div class="logo-ring ring-3"></div>
+      </div>
+    </div>
+    <h1 class="splash-title">NEXA</h1>
+    <p class="splash-sub">Next Generation AI Twin</p>
+    <div class="splash-owner">
+      <i class="fas fa-user-astronaut"></i>
+      <span>Powered by <b>AL-AMIN</b></span>
+    </div>
+    <div class="boot-progress">
+      <div class="boot-bar" id="bootBar"></div>
+    </div>
+    <div class="boot-text" id="bootText">INITIALIZING...</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- TOP BAR -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<header class="topbar" id="topbar">
+  <div class="topbar-inner">
+    <button class="btn-glass-icon" id="menuBtn" onclick="NEXA.ui && NEXA.ui.toggleSidebar && NEXA.ui.toggleSidebar()">
+      <i class="fas fa-bars"></i>
+    </button>
+    <button class="brand" onclick="NEXA.ui && NEXA.ui.goHome && NEXA.ui.goHome()">
+      <div class="brand-icon">N</div>
+      <div class="brand-text">
+        <span class="brand-name">NEXA</span>
+        <span class="brand-tag">AI Twin</span>
+      </div>
+    </button>
+    <div class="topbar-actions">
+      <button class="btn-glass-icon" onclick="NEXA.ui && NEXA.ui.toggleSettings && NEXA.ui.toggleSettings()">
+        <i class="fas fa-cog"></i>
+      </button>
+      <button class="btn-glass-icon" onclick="NEXA.ui && NEXA.ui.toggleProfile && NEXA.ui.toggleProfile()">
+        <i class="fas fa-user"></i>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- SIDEBAR -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <h3>Menu</h3>
+    <button class="btn-glass-icon small" onclick="NEXA.ui && NEXA.ui.closeSidebar && NEXA.ui.closeSidebar()">
+      <i class="fas fa-times"></i>
+    </button>
+  </div>
+  <nav class="sidebar-nav">
+    <a class="nav-item active" onclick="NEXA.ui && NEXA.ui.goHome && NEXA.ui.goHome()"><i class="fas fa-home"></i><span>Home</span></a>
+    <a class="nav-item" onclick="NEXA.ui && NEXA.ui.goChat && NEXA.ui.goChat()"><i class="fas fa-comments"></i><span>Chat</span></a>
+    <a class="nav-item" onclick="NEXA.ui && NEXA.ui.goVision && NEXA.ui.goVision()"><i class="fas fa-eye"></i><span>Vision</span></a>
+    <a class="nav-item" onclick="NEXA.ui && NEXA.ui.goVoice && NEXA.ui.goVoice()"><i class="fas fa-microphone"></i><span>Voice</span></a>
+    <a class="nav-item" onclick="NEXA.ui && NEXA.ui.goDocs && NEXA.ui.goDocs()"><i class="fas fa-file-alt"></i><span>Documents</span></a>
+    <a class="nav-item" onclick="NEXA.ui && NEXA.ui.goImageGen && NEXA.ui.goImageGen()"><i class="fas fa-image"></i><span>Image Gen</span></a>
+    <a class="nav-item" onclick="NEXA.ui && NEXA.ui.goTisha && NEXA.ui.goTisha()"><i class="fas fa-user-circle"></i><span>Customize Tisha</span></a>
+  </nav>
+  <div class="sidebar-footer">
+    <div class="version-info">
+      <span id="versionDisplay">v1.0.0</span>
+      <button class="btn-glass-icon small" onclick="NEXA.version && NEXA.version.checkForUpdates && NEXA.version.checkForUpdates()">
+        <i class="fas fa-sync-alt"></i>
+      </button>
+    </div>
+  </div>
+</aside>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- MAIN CONTAINER -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<main class="main-container">
+  
+  <!-- HOME SCREEN -->
+  <div class="screen active" id="homeScreen">
+    <div class="tisha-container" id="tishaContainer">
+      <canvas id="tishaCanvas"></canvas>
+      <div class="tisha-glow"></div>
+    </div>
+    <div class="glass-bubble tisha-bubble" id="tishaGreeting">
+      <div class="bubble-content">
+        <p>Hi <b>AL-AMIN</b>! আমি তিশা।</p>
+        <p>কী করতে চাও আজ?</p>
+      </div>
+      <div class="bubble-tail"></div>
+    </div>
+    <div class="glass-input-container">
+      <textarea id="homeInput" class="glass-textarea" placeholder="Ask NEXA anything..." rows="1" onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();NEXA.chat && NEXA.chat.sendFromHome && NEXA.chat.sendFromHome()}" oninput="NEXA.ui && NEXA.ui.autoGrow && NEXA.ui.autoGrow(this)"></textarea>
+      <div class="input-actions">
+        <button class="btn-glass-icon small" onclick="NEXA.vision && NEXA.vision.openUpload && NEXA.vision.openUpload()"><i class="fas fa-paperclip"></i></button>
+        <button class="btn-glass-icon small" onclick="NEXA.voice && NEXA.voice.toggle && NEXA.voice.toggle()"><i class="fas fa-microphone"></i></button>
+        <button class="btn-send" onclick="NEXA.chat && NEXA.chat.sendFromHome && NEXA.chat.sendFromHome()"><i class="fas fa-arrow-right"></i></button>
+      </div>
+    </div>
+    <div class="quick-actions">
+      <button class="glass-card quick-card" onclick="NEXA.vision && NEXA.vision.openUpload && NEXA.vision.openUpload()"><div class="quick-icon">📸</div><div class="quick-label">Vision</div></button>
+      <button class="glass-card quick-card" onclick="NEXA.voice && NEXA.voice.toggle && NEXA.voice.toggle()"><div class="quick-icon">🎤</div><div class="quick-label">Voice</div></button>
+      <button class="glass-card quick-card" onclick="NEXA.ui && NEXA.ui.goDocs && NEXA.ui.goDocs()"><div class="quick-icon">📄</div><div class="quick-label">Docs</div></button>
+      <button class="glass-card quick-card" onclick="NEXA.imagegen && NEXA.imagegen.open && NEXA.imagegen.open()"><div class="quick-icon">🎨</div><div class="quick-label">Create</div></button>
+    </div>
+    <div class="section-header">
+      <h2>Recent</h2>
+      <button class="btn-text" onclick="NEXA.ui && NEXA.ui.goChat && NEXA.ui.goChat()">See all</button>
+    </div>
+    <div class="recent-list" id="recentList"></div>
+  </div>
+  
+  <!-- CHAT SCREEN -->
+  <div class="screen" id="chatScreen">
+    <div class="chat-header">
+      <button class="btn-glass-icon" onclick="NEXA.ui && NEXA.ui.goHome && NEXA.ui.goHome()"><i class="fas fa-arrow-left"></i></button>
+      <div class="chat-title">
+        <span class="chat-avatar">👩</span>
+        <div>
+          <div class="chat-name">Tisha</div>
+          <div class="chat-status"><span class="status-dot"></span><span>Active</span></div>
+        </div>
+      </div>
+      <button class="btn-glass-icon" onclick="NEXA.chat && NEXA.chat.clear && NEXA.chat.clear()"><i class="fas fa-trash"></i></button>
+    </div>
+    <div class="chat-messages" id="chatMessages"></div>
+    <div class="chat-input-wrapper">
+      <div class="glass-input-container chat-mode">
+        <textarea id="chatInput" class="glass-textarea" placeholder="Message Tisha..." rows="1" onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();NEXA.chat && NEXA.chat.send && NEXA.chat.send()}" oninput="NEXA.ui && NEXA.ui.autoGrow && NEXA.ui.autoGrow(this)"></textarea>
+        <div class="input-actions">
+          <button class="btn-glass-icon small" onclick="NEXA.vision && NEXA.vision.openUpload && NEXA.vision.openUpload()"><i class="fas fa-paperclip"></i></button>
+          <button class="btn-glass-icon small" onclick="NEXA.voice && NEXA.voice.toggle && NEXA.voice.toggle()"><i class="fas fa-microphone"></i></button>
+          <button class="btn-send" id="sendBtn" onclick="NEXA.chat && NEXA.chat.send && NEXA.chat.send()"><i class="fas fa-arrow-right"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VISION SCREEN -->
+  <div class="screen" id="visionScreen">
+    <div class="screen-header">
+      <button class="btn-glass-icon" onclick="NEXA.ui && NEXA.ui.goHome && NEXA.ui.goHome()"><i class="fas fa-arrow-left"></i></button>
+      <h2>📸 Vision</h2>
+      <div style="width: 48px;"></div>
+    </div>
+    <div class="vision-content">
+      <div class="upload-area glass-card" id="visionUploadArea">
+        <div class="upload-icon"><i class="fas fa-cloud-upload-alt"></i></div>
+        <p>Drop image or click to upload</p>
+        <span class="upload-hint">JPG, PNG, WEBP · Max 10MB</span>
+        <input type="file" id="visionFileInput" accept="image/*" hidden onchange="NEXA.vision && NEXA.vision.handleFile && NEXA.vision.handleFile(event)">
+      </div>
+      <div class="vision-preview" id="visionPreview" style="display:none;">
+        <img id="visionImage" src="" alt="Preview">
+        <button class="btn-glass-icon" onclick="NEXA.vision && NEXA.vision.clear && NEXA.vision.clear()"><i class="fas fa-times"></i></button>
+      </div>
+      <button class="btn-primary" onclick="NEXA.vision && NEXA.vision.analyze && NEXA.vision.analyze()"><i class="fas fa-magic"></i> Analyze Image</button>
+    </div>
+  </div>
+
+  <!-- VOICE SCREEN -->
+  <div class="screen" id="voiceScreen">
+    <div class="screen-header">
+      <button class="btn-glass-icon" onclick="NEXA.ui && NEXA.ui.goHome && NEXA.ui.goHome()"><i class="fas fa-arrow-left"></i></button>
+      <h2>🎤 Voice</h2>
+      <div style="width: 48px;"></div>
+    </div>
+    <div class="voice-content">
+      <div class="voice-avatar" id="voiceAvatar">
+        <div class="voice-rings">
+          <div class="voice-ring"></div>
+          <div class="voice-ring"></div>
+          <div class="voice-ring"></div>
+        </div>
+        <div class="voice-icon">👩</div>
+      </div>
+      <div class="voice-status" id="voiceStatus">Tap to speak</div>
+      <div class="voice-visualizer"><canvas id="voiceVisualizer"></canvas></div>
+      <button class="btn-voice-big" id="voiceBtn" onclick="NEXA.voice && NEXA.voice.toggle && NEXA.voice.toggle()"><i class="fas fa-microphone"></i></button>
+    </div>
+  </div>
+
+  <!-- DOCUMENTS SCREEN -->
+  <div class="screen" id="docsScreen">
+    <div class="screen-header">
+      <button class="btn-glass-icon" onclick="NEXA.ui && NEXA.ui.goHome && NEXA.ui.goHome()"><i class="fas fa-arrow-left"></i></button>
+      <h2>📄 Documents</h2>
+      <div style="width: 48px;"></div>
+    </div>
+    <div class="docs-content">
+      <div class="upload-area glass-card">
+        <div class="upload-icon"><i class="fas fa-file-upload"></i></div>
+        <p>Upload Document</p>
+        <span class="upload-hint">PDF, DOCX, TXT · Max 20MB</span>
+        <input type="file" id="docsFileInput" accept=".pdf,.docx,.txt,.md" hidden onchange="NEXA.documents && NEXA.documents.handleFile && NEXA.documents.handleFile(event)">
+      </div>
+      <div class="docs-list" id="docsList"></div>
+    </div>
+  </div>
+
+  <!-- IMAGE GEN SCREEN -->
+  <div class="screen" id="imagegenScreen">
+    <div class="screen-header">
+      <button class="btn-glass-icon" onclick="NEXA.ui && NEXA.ui.goHome && NEXA.ui.goHome()"><i class="fas fa-arrow-left"></i></button>
+      <h2>🎨 Create</h2>
+      <div style="width: 48px;"></div>
+    </div>
+    <div class="imagegen-content">
+      <div class="glass-input-container">
+        <textarea id="imagegenPrompt" class="glass-textarea" placeholder="Describe the image you want to create..." rows="3"></textarea>
+      </div>
+      <div class="style-chips">
+        <button class="chip active" onclick="NEXA.imagegen && NEXA.imagegen.setStyle && NEXA.imagegen.setStyle('realistic')">Realistic</button>
+        <button class="chip" onclick="NEXA.imagegen && NEXA.imagegen.setStyle && NEXA.imagegen.setStyle('anime')">Anime</button>
+        <button class="chip" onclick="NEXA.imagegen && NEXA.imagegen.setStyle && NEXA.imagegen.setStyle('cartoon')">Cartoon</button>
+        <button class="chip" onclick="NEXA.imagegen && NEXA.imagegen.setStyle && NEXA.imagegen.setStyle('cyberpunk')">Cyberpunk</button>
+        <button class="chip" onclick="NEXA.imagegen && NEXA.imagegen.setStyle && NEXA.imagegen.setStyle('fantasy')">Fantasy</button>
+      </div>
+      <button class="btn-primary" onclick="NEXA.imagegen && NEXA.imagegen.generate && NEXA.imagegen.generate()"><i class="fas fa-magic"></i> Generate Image</button>
+      <div class="imagegen-result" id="imagegenResult"></div>
+    </div>
+  </div>
+
+  <!-- TISHA CUSTOMIZE SCREEN -->
+  <div class="screen" id="tishaScreen">
+    <div class="screen-header">
+      <button class="btn-glass-icon" onclick="NEXA.ui && NEXA.ui.goHome && NEXA.ui.goHome()"><i class="fas fa-arrow-left"></i></button>
+      <h2>👩 Customize Tisha</h2>
+      <button class="btn-glass-icon" onclick="NEXA.tisha && NEXA.tisha.save && NEXA.tisha.save()"><i class="fas fa-save"></i></button>
+    </div>
+    <div class="tisha-customize-content">
+      <div class="tisha-preview-large"><canvas id="tishaPreviewCanvas"></canvas></div>
+      <div class="customize-section"><label>Gender</label><div class="option-row"><button class="option-chip active">Female</button><button class="option-chip">Male</button><button class="option-chip">Non-binary</button></div></div>
+      <div class="customize-section"><label>Skin Tone</label><div class="option-row"><button class="color-chip" style="background:#f4d5b3"></button><button class="color-chip active" style="background:#d4a574"></button><button class="color-chip" style="background:#a17c52"></button><button class="color-chip" style="background:#5c3a1a"></button></div></div>
+      <div class="customize-section"><label>Hair Style</label><div class="option-row"><button class="option-chip active">Long</button><button class="option-chip">Short</button><button class="option-chip">Wavy</button><button class="option-chip">Bun</button></div></div>
+      <div class="customize-section"><label>Hair Color</label><div class="option-row"><button class="color-chip active" style="background:#1a1a1a"></button><button class="color-chip" style="background:#3a2a1a"></button><button class="color-chip" style="background:#8b5a3c"></button><button class="color-chip" style="background:#d4a574"></button></div></div>
+      <div class="customize-section"><label>Eye Color</label><div class="option-row"><button class="color-chip active" style="background:#6b4423"></button><button class="color-chip" style="background:#2c3e50"></button><button class="color-chip" style="background:#3e5e42"></button><button class="color-chip" style="background:#4a2f18"></button></div></div>
+      <div class="customize-section"><label>Voice</label><div class="option-row"><button class="option-chip active">Soft Female</button><button class="option-chip">Energetic</button><button class="option-chip">Calm</button></div></div>
+      <div class="customize-section"><label>Name</label><input type="text" class="glass-input-field" value="তিশা" id="tishaNameInput"></div>
+    </div>
+  </div>
+
+</main>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- BOTTOM NAVIGATION -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<nav class="bottom-nav" id="bottomNav">
+  <button class="nav-btn active" onclick="NEXA.ui && NEXA.ui.goHome && NEXA.ui.goHome()"><i class="fas fa-home"></i><span>Home</span></button>
+  <button class="nav-btn" onclick="NEXA.ui && NEXA.ui.goChat && NEXA.ui.goChat()"><i class="fas fa-comments"></i><span>Chat</span></button>
+  <button class="nav-btn" onclick="NEXA.voice && NEXA.voice.toggle && NEXA.voice.toggle()"><i class="fas fa-microphone"></i><span>Voice</span></button>
+  <button class="nav-btn" onclick="NEXA.vision && NEXA.vision.openUpload && NEXA.vision.openUpload()"><i class="fas fa-eye"></i><span>Vision</span></button>
+  <button class="nav-btn" onclick="NEXA.ui && NEXA.ui.toggleStats && NEXA.ui.toggleStats()"><i class="fas fa-chart-bar"></i><span>Stats</span></button>
+</nav>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- SETTINGS MODAL -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div class="modal-overlay" id="settingsModal" onclick="NEXA.ui && NEXA.ui.closeSettings && NEXA.ui.closeSettings(event)">
+  <div class="glass-modal" onclick="event.stopPropagation()">
+    <div class="modal-header">
+      <h2>⚙️ Settings</h2>
+      <button class="btn-glass-icon small" onclick="NEXA.ui && NEXA.ui.closeSettings && NEXA.ui.closeSettings()"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="modal-tabs">
+      <button class="tab-btn active" onclick="NEXA.ui && NEXA.ui.switchTab && NEXA.ui.switchTab('general')">General</button>
+      <button class="tab-btn" onclick="NEXA.ui && NEXA.ui.switchTab && NEXA.ui.switchTab('ai')">AI</button>
+      <button class="tab-btn" onclick="NEXA.ui && NEXA.ui.switchTab && NEXA.ui.switchTab('tisha')">Tisha</button>
+      <button class="tab-btn" onclick="NEXA.ui && NEXA.ui.switchTab && NEXA.ui.switchTab('about')">About</button>
+    </div>
+    <div class="modal-content">
+      <div class="tab-panel active" data-tab="general">
+        <div class="setting-row"><label>Theme</label><div class="option-row"><button class="option-chip active" onclick="NEXA.ui && NEXA.ui.setTheme && NEXA.ui.setTheme('dark')">Dark</button><button class="option-chip" onclick="NEXA.ui && NEXA.ui.setTheme && NEXA.ui.setTheme('light')">Light</button><button class="option-chip" onclick="NEXA.ui && NEXA.ui.setTheme && NEXA.ui.setTheme('auto')">Auto</button></div></div>
+      </div>
+      <div class="tab-panel" data-tab="ai">
+        <div class="setting-row"><label>Default Model</label><select class="glass-select"><option>Auto (Recommended)</option><option>Groq Qwen 3.8</option><option>Groq GPT-OSS-120B</option><option>OpenRouter Dolphin</option></select></div>
+        <div class="setting-row"><label>Temperature: <span id="tempValue">0.7</span></label><input type="range" min="0" max="1" step="0.1" value="0.7" oninput="document.getElementById('tempValue').textContent=this.value"></div>
+      </div>
+      <div class="tab-panel" data-tab="tisha">
+        <div class="setting-row"><label>Voice</label><div class="option-row"><button class="option-chip active">Soft</button><button class="option-chip">Energetic</button><button class="option-chip">Calm</button><button class="option-chip">Off</button></div></div>
+        <div class="setting-row"><label>Emotions</label><button class="btn-secondary" onclick="NEXA.ui && NEXA.ui.goTisha && NEXA.ui.goTisha()">Customize Avatar</button></div>
+      </div>
+      <div class="tab-panel" data-tab="about">
+        <div class="about-info">
+          <div class="about-logo">N</div>
+          <h3>NEXA AI</h3>
+          <p>Version <span id="aboutVersion">1.0.0</span></p>
+          <p class="about-desc">Next Generation AI Twin</p>
+          <p class="about-author">Made with ❤️ by AL-AMIN</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- PROFILE MODAL -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div class="modal-overlay" id="profileModal" onclick="NEXA.ui && NEXA.ui.closeProfile && NEXA.ui.closeProfile(event)">
+  <div class="glass-modal small" onclick="event.stopPropagation()">
+    <div class="modal-header">
+      <h2>👤 Profile</h2>
+      <button class="btn-glass-icon small" onclick="NEXA.ui && NEXA.ui.closeProfile && NEXA.ui.closeProfile()"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="profile-content">
+      <div class="profile-avatar">A</div>
+      <h3>AL-AMIN</h3>
+      <p class="profile-role">Developer & Admin</p>
+      <div class="profile-stats">
+        <div class="profile-stat"><div class="stat-value" id="profileMsgCount">0</div><div class="stat-label">Messages</div></div>
+        <div class="profile-stat"><div class="stat-value" id="profileDaysCount">1</div><div class="stat-label">Days</div></div>
+      </div>
+      <button class="btn-secondary" onclick="NEXA.auth && NEXA.auth.promptLogin && NEXA.auth.promptLogin()"><i class="fas fa-shield-alt"></i> Admin Panel</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- UPDATE MODAL -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div class="modal-overlay" id="updateModal">
+  <div class="glass-modal small">
+    <div class="modal-header"><h2>🎉 Update Available</h2></div>
+    <div class="update-content">
+      <div class="update-version">Version <span id="newVersion">1.1.0</span></div>
+      <div class="update-changes" id="updateChanges"></div>
+      <div class="update-actions">
+        <button class="btn-secondary" onclick="NEXA.ui && NEXA.ui.closeUpdate && NEXA.ui.closeUpdate()">Later</button>
+        <button class="btn-primary" onclick="NEXA.version && NEXA.version.applyUpdate && NEXA.version.applyUpdate()">Update Now</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- TOAST & LOADING -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div class="toast" id="toast"></div>
+<div class="loading-overlay" id="loadingOverlay">
+  <div class="glass-spinner"></div>
+  <div class="loading-text" id="loadingText">Loading...</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<!--                ALL SCRIPT FILES                        -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- ═══════════════════════════════════════════════════════ -->
+
+<!-- CORE SYSTEM -->
+<script src="js/core/config.js"></script>
+<script src="js/core/engine.js"></script>
+<script src="js/core/loader.js"></script>
+<script src="js/core/storage.js"></script>
+<script src="js/core/version.js"></script>
+
+<!-- TISHA CHARACTER -->
+<script src="js/tisha/face.js"></script>
+<script src="js/tisha/body.js"></script>
+<script src="js/tisha/animations.js"></script>
+<script src="js/tisha/emotions.js"></script>
+
+<!-- AI PROVIDERS -->
+<script src="js/ai/groq.js"></script>
+<script src="js/ai/openrouter.js"></script>
+<script src="js/ai/router.js"></script>
+
+<!-- MODULES -->
+<script src="js/modules/chat.js"></script>
+<script src="js/modules/vision.js"></script>
+<script src="js/modules/voice.js"></script>
+<script src="js/modules/documents.js"></script>
+<script src="js/modules/memory.js"></script>
+<script src="js/modules/imagegen.js"></script>
+
+<!-- UI -->
+<script src="js/ui/main-ui.js"></script>
+<script src="js/ui/chat-ui.js"></script>
+<script src="js/ui/settings.js"></script>
+<script src="js/ui/notifications.js"></script>
+
+<!-- ADMIN -->
+<script src="js/admin/auth.js"></script>
+
+<!-- UTILS -->
+<script src="js/utils/helpers.js"></script>
+<script src="js/utils/language.js"></script>
+
+<!-- FINAL BOOT -->
+<script src="js/core/boot.js"></script>
+
+</body>
+</html>
