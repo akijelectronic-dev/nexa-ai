@@ -12,7 +12,7 @@ NEXA.register('auth', {
   admins: {
     'alamin': {
       role: 'super_admin',
-      passwordHash: 'h_1q2w3e4r', // Simple hash for demo
+      passwordHash: 'alamin777', // Simple hash for demo
       permissions: ['all']
     }
   },
